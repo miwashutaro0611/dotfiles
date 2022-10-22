@@ -1,0 +1,24 @@
+{
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "files.autoSave": "afterDelay",
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDelete": false,
+  "editor.minimap.enabled": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  "editor.fontSize": 16,
+  "editor.tabSize": 2,
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "none",
+  "editor.stickyScroll.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000005"
+        }
+      }
+    ]
+  },
+  "explorer.confirmDragAndDrop": false
+}
