@@ -29,7 +29,7 @@ $ cd ~/dotfiles && make
 5. If you want to output the current extensions, execute "code --list-extensions > ~/dotfiles/vscode/extensions".
 ```
 
-Set google chrome.
+### Set google chrome.
 
 ```
 1. Access each URL in "~/dotfiles/chrome/extensions" with Google Chrome.
