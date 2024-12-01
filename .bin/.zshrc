@@ -1,46 +1,53 @@
-# peco
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 function peco-history-selection() {
-  BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
-  CURSOR=$#BUFFER
-  zle reset-prompt
+   BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+   CURSOR=$#BUFFER
+   zle reset-prompt
 }
 
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-# nodenv
+eval "$(anyenv init -)"
+
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+eval "$(starship init zsh)"
+
 # alias
-alias ga='git add -A'
-alias gc='git commit -m'
+alias gaa='git add -A'
+alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gbr='git branch'
 alias gac='git add -A && git commit -m'
 alias gchb='git checkout -b'
 alias gch='git checkout'
 alias gst='git status'
-alias gs='git stash'
-alias g='git'
-alias y='yarn'
-alias yd='yarn dev'
-alias yt='yarn test'
-alias yb='yarn build'
-alias yl='yarn lint'
-alias n='npm'
-alias ni='npm i'
-alias ns='npm run start'
-alias nb='npm run build'
-alias nt='npm run test'
-alias nl='npm run lint'
+alias gs='git stash -u'
+alias gc='git add -A && git cz'
+alias gf='git fetch'
+alias yi='ni'
+alias y='nr'
+alias yd='nr dev'
+alias yg='nr git'
 alias gd='git pull origin develop'
 alias gm='git pull origin main'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias t='touch'
-alias mk='mkdir'
+alias gmm='git check main && git pull origin main'
+alias webstorm='open -na "WebStorm.app" --args nosplash "$@"'
+alias i='npm i -g @antfu/ni'
+alias wb='webstorm .'
+alias z='cursor ~/.zshrc'
+alias b='bat ~/.zshrc'
+
+# 現在のブランチをプッシュ
+function gu() {
+   BRANCH=$(git symbolic-ref --short HEAD | tr -d '\n') # カレントブランチ名を取得
+   git push origin $BRANCH
+}
 
 function cdc {
   cd ~/code
@@ -55,7 +62,11 @@ function op {
 }
 
 function co {
-  code .
+  cursor .
+}
+
+function mq {
+  mysql.server start
 }
 
 ## mkdir && cd の同時実行
@@ -69,14 +80,20 @@ function mkcd {
   fi
 }
 
-# zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# 現在のブランチをプッシュ
-function gu() {
-  BRANCH=$(git symbolic-ref --short HEAD | tr -d '\n') # カレントブランチ名を取得
-  git push origin $BRANCH
-}
+# fulutter
+
+export PATH=$PATH:/Users/miwanoshuntarou/development/flutter/bin
+
+# use rbenv
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # exaの時のディレクトリ表示カスタマイズ
 
