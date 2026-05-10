@@ -1,0 +1,47 @@
+# Never commit secrets / credentials
+*.local
+*.local.*
+!*.local.example
+auth.json
+oauth_creds.json
+*credentials*
+.env
+.env.*
+
+# Runtime / cache files (in case copied accidentally)
+history.jsonl
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+sessions/
+cache/
+logs/
+log/
+backups/
+file-history/
+session-env/
+shell-snapshots/
+todos/
+tasks/
+projects/
+plans/
+plugins/
+telemetry/
+debug/
+paste-cache/
+ambient-suggestions/
+mcp-needs-auth-cache.json
+stats-cache.json
+policy-limits.json
+.codex-global-state.json*
+google_accounts.json
+installation_id
+
+# OS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+.vscode/
+.idea/

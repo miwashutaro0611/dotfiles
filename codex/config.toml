@@ -1,0 +1,20 @@
+model = "gpt-5.5"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+model_reasoning_effort = "medium"
+
+[features]
+rmcp_client = true
+
+[mcp_servers.figma-mcp]
+url = "http://127.0.0.1:3845/mcp"
+
+[mcp_servers.pencil]
+command = "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64"
+args = [ "--app", "desktop" ]
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "model", "project-name", "git-branch", "context-remaining", "context-used"]
+
+# Note: [projects.*], [marketplaces.*], [plugins.*] sections are machine-specific
+# and managed by codex itself — they should NOT be tracked in dotfiles.

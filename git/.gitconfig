@@ -1,0 +1,40 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = code --wait
+	autocrlf = input
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[rebase]
+	autoStash = true
+
+[diff]
+	colorMoved = default
+
+[color]
+	ui = auto
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	cm = commit -m
+	ca = commit --amend
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[include]
+	path = ~/.gitconfig.local

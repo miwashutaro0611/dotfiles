@@ -1,0 +1,71 @@
+{
+  "editor.fontSize": 14,
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.iconTheme": "vscode-great-icons",
+  "explorer.confirmDelete": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "explorer.confirmDragAndDrop": false,
+  "editor.tabSize": 2,
+  "workbench.colorTheme": "Dracula Soft",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "glassit.alpha": 255,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.startupEditor": "none",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "editor.stickyScroll.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000000"
+        }
+      }
+    ]
+  },
+  "versionlens.dotnet.nuget.sources": [],
+  "npm.keybindingsChangedWarningShown": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.format.enable": false,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.lineNumbers": "on",
+  "editor.rulers": [],
+  "eslint.packageManager": "yarn",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "npm.packageManager": "yarn",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "files.autoSave": "afterDelay",
+  "editor.glyphMargin": false,
+  "files.associations": {
+    ".env*": "dotenv"
+  },
+  "prisma.showPrismaDataPlatformNotification": false,
+  "makefile.configureOnOpen": true,
+  "workbench.activityBar.orientation": "vertical",
+  "claudeCode.preferredLocation": "panel",
+  "window.autoDetectColorScheme": false
+}
