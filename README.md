@@ -41,6 +41,7 @@ cd ~/code/dotfiles
 | `codex/config.toml` | `~/.codex/config.toml` |
 | `gemini/settings.json` | `~/.gemini/settings.json` |
 | `ai/AGENTS.md` | `~/AGENTS.md` |
+| `starship/starship.toml` | `~/.config/starship.toml` |
 | `cursor/{settings,keybindings}.json` | `~/Library/Application Support/Cursor/User/...` |
 
 ## Git: 個人情報の分離

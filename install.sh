@@ -66,6 +66,8 @@ LINKS=(
 
   "ai/AGENTS.md::$HOME/AGENTS.md"
 
+  "starship/starship.toml::$HOME/.config/starship.toml"
+
   "cursor/settings.json::$HOME/Library/Application Support/Cursor/User/settings.json"
   "cursor/keybindings.json::$HOME/Library/Application Support/Cursor/User/keybindings.json"
 )
