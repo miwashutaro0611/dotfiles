@@ -28,6 +28,7 @@ brew bundle --file=Brewfile
 | `install.sh` | リポジトリ内のファイルを `$HOME` にシンボリックリンク **+** 外部リポジトリ (`zsh-autosuggestions` 等) を自動 clone。何度でも再実行可。 |
 | `install.sh --dry-run` | 実際に書き込まずに、何が起こるかだけ表示。 |
 | `macos/defaults.sh` | macOS のシステム設定 (Finder / Dock / キーボード) を適用。 |
+| `macos/shortcuts.sh` | macOS のキーボードショートカット (スリープ / Mission Control / Spaces / デスクトップ表示) を適用。 |
 
 ### `install.sh` が clone する外部リポジトリ
 

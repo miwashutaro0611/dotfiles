@@ -63,7 +63,12 @@ if confirm "Apply macOS system defaults (Finder/Dock/keyboard)?"; then
   "$DOTFILES_DIR/macos/defaults.sh"
 fi
 
-# 8. .gitconfig.local reminder
+# 8. macOS keyboard shortcuts (optional, prompt)
+if confirm "Apply macOS keyboard shortcuts (Sleep / Mission Control / Spaces)?"; then
+  "$DOTFILES_DIR/macos/shortcuts.sh"
+fi
+
+# 9. .gitconfig.local reminder
 if [ ! -f "$HOME/.gitconfig.local" ]; then
   warn "Don't forget to create ~/.gitconfig.local from the template:"
   warn "  cp \"$DOTFILES_DIR/git/.gitconfig.local.example\" ~/.gitconfig.local"
