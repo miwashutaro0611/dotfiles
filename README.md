@@ -10,7 +10,15 @@ cd ~/code/dotfiles
 ./bootstrap.sh
 ```
 
-`bootstrap.sh` は Homebrew + パッケージ、Oh My Zsh をインストールしたあと `install.sh` を実行します。
+`bootstrap.sh` は Homebrew + Brewfile (CLI ツール + GUI アプリ) + Oh My Zsh をインストールしたあと `install.sh` を実行します。
+
+### GUI アプリだけインストールしたい場合
+
+```bash
+brew bundle --file=Brewfile
+```
+
+不要なアプリは Brewfile の該当行をコメントアウトしてください。
 
 ## スクリプト一覧
 
@@ -64,6 +72,24 @@ $EDITOR ~/.gitconfig.local   # user.name / user.email を設定
 ## バックアップ
 
 `install.sh` はリンク作成前に、既存の非 symlink ファイルを `~/.dotfiles_backup/<timestamp>/` に退避します。サイレントに上書きされることはありません。
+
+## アプリケーションのインストール
+
+`Brewfile` に CLI ツールと GUI アプリ (Cask) を一括管理しています。
+
+| 種類 | コマンド |
+|---|---|
+| 全部一括インストール | `brew bundle --file=Brewfile` |
+| 何が未インストールか確認 | `brew bundle check --file=Brewfile --verbose` |
+| 現在の環境から Brewfile を再生成 | `brew bundle dump --file=Brewfile.new --force` |
+
+### Mac App Store のアプリ
+
+`mas` 経由でコマンドラインから App Store アプリを入れられます。`Brewfile` 末尾に LINE / Magnet などの例をコメントアウトで残してあるので、必要なものだけ有効化してください。事前に1回だけ `mas signin <apple-id>` が必要です。
+
+### brew で入らないアプリ
+
+Adobe Creative Cloud / Affinity / Final Cut Pro / Xcode / Dia 等は手動インストールが必要です。Brewfile 末尾にメモを残しています。
 
 ## 管理しないもの (意図的に除外)
 
