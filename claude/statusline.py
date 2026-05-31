@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pattern 4: Fine-grained progress bar with true color gradient"""
-import json, sys, subprocess, os
+import json, sys, subprocess, os, time
+from datetime import datetime
 
 data = json.load(sys.stdin)
 
@@ -32,6 +33,30 @@ def bar(pct, width=10):
 def fmt(label, pct):
     p = round(pct)
     return f'{label} {gradient(pct)}{bar(pct)} {p}%{R}'
+
+def fmt_reset(resets_at):
+    if not resets_at:
+        return ''
+    try:
+        ts = int(resets_at)
+        remaining = ts - int(time.time())
+        reset_dt = datetime.fromtimestamp(ts)
+        today = datetime.fromtimestamp(time.time()).date()
+        fmt_str = '%m/%d %H:%M' if reset_dt.date() != today else '%H:%M'
+        clock = reset_dt.strftime(fmt_str)
+        if remaining <= 0:
+            return f' {DIM}({clock}){R}'
+        h, m = divmod(remaining // 60, 60)
+        d, h = divmod(h, 24)
+        if d > 0:
+            rel = f'{d}d{h}h'
+        elif h > 0:
+            rel = f'{h}h{m}m'
+        else:
+            rel = f'{m}m'
+        return f' {DIM}{clock} ({rel}){R}'
+    except (TypeError, ValueError):
+        return ''
 
 def get_git_branch(cwd):
     try:
@@ -80,12 +105,14 @@ ctx = data.get('context_window', {}).get('used_percentage')
 if ctx is not None:
     lines.append(f' {fmt("ctx", ctx)} ')
 
-five = data.get('rate_limits', {}).get('five_hour', {}).get('used_percentage')
+five_data = data.get('rate_limits', {}).get('five_hour', {})
+five = five_data.get('used_percentage')
 if five is not None:
-    lines.append(f' {fmt("5h", five)} ')
+    lines.append(f' {fmt("5h", five)}{fmt_reset(five_data.get("resets_at"))} ')
 
-week = data.get('rate_limits', {}).get('seven_day', {}).get('used_percentage')
+week_data = data.get('rate_limits', {}).get('seven_day', {})
+week = week_data.get('used_percentage')
 if week is not None:
-    lines.append(f' {fmt("7d", week)} ')
+    lines.append(f' {fmt("7d", week)}{fmt_reset(week_data.get("resets_at"))} ')
 
 print('\n'.join(lines), end='')

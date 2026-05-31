@@ -2,19 +2,78 @@ model = "gpt-5.5"
 approval_policy = "never"
 sandbox_mode = "danger-full-access"
 model_reasoning_effort = "medium"
+notify = [ "/Users/miwashuntaro/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended" ]
 
 [features]
 rmcp_client = true
+js_repl = false
 
 [mcp_servers.figma-mcp]
 url = "http://127.0.0.1:3845/mcp"
 
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_MARKETPLACE_NAME = "openai-bundled"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+CODEX_HOME = "/Users/miwashuntaro/.codex"
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = ""
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/node"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "167fdf579477181fba1773c1efb067b00c5a64fe85dafb50a2001bde198dc739"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/miwashuntaro/.codex"
+NODE_REPL_UNTRUSTED_ENV_ALLOWLIST = "BROWSER_USE_MARKETPLACE_NAME"
+
 [mcp_servers.pencil]
 command = "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64"
-args = [ "--app", "desktop" ]
+args = [ "--app", "desktop", "--agent", "codexCLI" ]
 
 [tui]
-status_line = ["model-with-reasoning", "current-dir", "model", "project-name", "git-branch", "context-remaining", "context-used"]
+status_line = [ "model-with-reasoning", "current-dir", "model", "project-name", "git-branch", "context-remaining", "context-used" ]
 
-# Note: [projects.*], [marketplaces.*], [plugins.*] sections are machine-specific
-# and managed by codex itself — they should NOT be tracked in dotfiles.
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[projects."/Users/miwashuntaro/code/zenn-articles"]
+trust_level = "trusted"
+
+[projects."/Users/miwashuntaro/code/toco"]
+trust_level = "trusted"
+
+[projects."/Users/miwashuntaro/code/miwa-portfolio"]
+trust_level = "trusted"
+
+[projects."/Users/miwashuntaro/code/auto-rss-feed"]
+trust_level = "trusted"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-23T07:22:45Z"
+source_type = "local"
+source = "/Users/miwashuntaro/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-23T05:32:22Z"
+source_type = "local"
+source = "/Users/miwashuntaro/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[desktop]
+appearanceTheme = "dark"
